@@ -1,66 +1,55 @@
 package orderingSystem;
 
-
-
 public class Menu {
-    private int price;
-    String [] main_dish = {"Beef Stew", "Pasta", "Sweet and Sour Chicken", "Chicken Cordon Bleu", "Chicken Parmesan"};
-    String [] dessert = {"Cake", "Ice Cream", "Halo-Halo", "Leche Flan", "Banana Pudding"};
-    String [] drinks = {"Coke", "Sprite", "Royal", "Iced Coffee"};
+    String [] cpu = {"Intel Core i5-13400", "Intel Core i9-13900k","Intel Core i9-14900k", "Ryzen 7 7800X3D", "Ryzen 9 7950X3D"};
+    int [] cpu_prices = {12400, 25000, 30000, 15000, 21000};
+    String [] gpu = {"RTX 3060 ti", "RTX 4060 ti", "RTX 4070", "RX 6800 XT", "RX 7900 XTX"};
+    int [] gpu_prices = {16000, 25000, 30000, 21000, 45000};
+    String [] storage = {"512gb NVME SSD", "1TB NVME SSD", "2TB NVME SSD"};
+    int [] storage_prices = {2000, 3000, 5000};
+    String [] memory = {"2x8gb RAM", "2x16gb RAM", "2x32gb RAM"};
+    int [] memory_prices = {2600, 4500, 8500};
 
+    String [] psu = {"650W 80+ Gold", "750W 80+ Gold", "850W 80+ Gold"};
+    int [] psu_prices = {5000, 7000, 10000};
 
-    public void displayMainDish() {
-        for (int i = 0; i < main_dish.length ; i++) {
-            if(i == 0) {
-                price = 650;
-            } else if(i == 1) {
-                price = 300;
-            } else if(i == 2) {
-                price = 400;
-            } else if(i == 3) {
-                price = 450;
-            } else if(i == 4) {
-                price = 475;
-            }
-            System.out.println(main_dish[i] + " " + price + "₱");
+    String [] pc_case = {"ATX", "Micro-ATX"};
+    int [] case_prices = {2500, 4000};
+
+    public void displayCpu() {
+        for (int i = 0; i < cpu.length; i++) {
+            System.out.println((i + 1) + "-" + cpu[i] + " " + "₱" + cpu_prices[i]);
         }
     }
 
-
-    public void displayDessert() {
-        for (int i = 0; i < dessert.length; i++) {
-            if(i == 0) {
-                price = 150;
-            } else if(i == 1) {
-                price = 200;
-            } else if(i == 2) {
-                price = 125;
-            } else if(i == 3) {
-                price = 100;
-            } else if(i == 4) {
-                price = 85;
-            }
-            System.out.println(dessert[i] + " " + price + "₱");
+    public void displayGpu() {
+        for (int i = 0; i < gpu.length; i++) {
+            System.out.println((i + 1) + "-" + gpu[i] + " " + "₱" + gpu_prices[i]);
         }
     }
 
-    public void displayDrinks() {
-        for (int i = 0; i < drinks.length; i++) {
-            if(i <= 2) {
-                price = 40;
-            } else {
-                price = 60;
-            }
-            System.out.println(drinks[i] + " " + price + "₱");
+    public void displayStorage() {
+        for (int i = 0; i < storage.length; i++) {
+            System.out.println((i + 1) + "-" + storage[i] + " " + "₱" + storage_prices[i]);
         }
     }
 
+    public void displayMemory() {
+        for (int i = 0; i < memory.length; i++) {
+            System.out.println((i + 1) + "-" + memory[i] + " " + "₱" + memory_prices[i]);
+        }
+    }
 
-    public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.displayMainDish();
-        menu.displayDessert();
-        menu.displayDrinks();
+    public void displayPsu() {
+        for (int i = 0; i < psu.length; i++) {
+            System.out.println((i + 1) + "-" + psu[i] + " " + "₱" + psu_prices[i]);
+        }
+    }
+
+    public void displayCase() {
+        for (int i = 0; i < pc_case.length; i++) {
+            System.out.println((i + 1) + "-" + pc_case[i] + " " + "₱" + case_prices[i]);
+        }
     }
 
 
