@@ -16,4 +16,53 @@ public class orderItems {
         this.psu = psu;
         this.pc_case = pc_case;
     }
+
+
+    public String getCpu() {
+        return cpu;
+    }
+
+    public void setCpu(String cpu) {
+        this.cpu = cpu;
+    }
+
+    public String getGpu() {
+        return gpu;
+    }
+
+    public void setGpu(String gpu) {
+        this.gpu = gpu;
+    }
+
+    public String getStorage() {
+        return storage;
+    }
+
+    public void setStorage(String storage) {
+        this.storage = storage;
+    }
+
+    public String getMemory() {
+        return memory;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public String getPsu() {
+        return psu;
+    }
+
+    public void setPsu(String psu) {
+        this.psu = psu;
+    }
+
+    public String getPc_case() {
+        return pc_case;
+    }
+
+    public void setPc_case(String pc_case) {
+        this.pc_case = pc_case;
+    }
 }
