@@ -1,6 +1,12 @@
 package orderingSystem;
 
 public class orderItems {
+    private int cpu_price;
+    private int gpu_price;
+    private int storage_price;
+    private int memory_price;
+    private int psu_price;
+    private int case_price;
     private String cpu;
     private String gpu;
     private String storage;
@@ -8,13 +14,19 @@ public class orderItems {
     private String psu;
     private String pc_case;
 
-    public orderItems(String cpu, String gpu, String storage, String memory, String psu, String pc_case) {
+    public orderItems(String cpu, String gpu, String storage, String memory, String psu, String pc_case, int cpu_price, int gpu_price, int storage_price, int memory_price, int psu_price,int case_price ) {
         this.cpu = cpu;
         this.gpu = gpu;
         this.storage = storage;
         this.memory = memory;
         this.psu = psu;
         this.pc_case = pc_case;
+        this.cpu_price = cpu_price;
+        this.gpu_price = gpu_price;
+        this.storage_price = storage_price;
+        this.memory_price = memory_price;
+        this.psu_price = psu_price;
+        this.case_price = case_price;
     }
 
 
@@ -22,47 +34,54 @@ public class orderItems {
         return cpu;
     }
 
-    public void setCpu(String cpu) {
-        this.cpu = cpu;
-    }
-
     public String getGpu() {
         return gpu;
     }
 
-    public void setGpu(String gpu) {
-        this.gpu = gpu;
-    }
 
     public String getStorage() {
         return storage;
     }
 
-    public void setStorage(String storage) {
-        this.storage = storage;
-    }
 
     public String getMemory() {
         return memory;
     }
 
-    public void setMemory(String memory) {
-        this.memory = memory;
-    }
 
     public String getPsu() {
         return psu;
-    }
-
-    public void setPsu(String psu) {
-        this.psu = psu;
     }
 
     public String getPc_case() {
         return pc_case;
     }
 
-    public void setPc_case(String pc_case) {
-        this.pc_case = pc_case;
+    public int getCpu_price() {
+        return cpu_price;
+    }
+
+    public int getGpu_price() {
+        return gpu_price;
+    }
+
+    public int getStorage_price() {
+        return storage_price;
+    }
+
+    public int getMemory_price() {
+        return memory_price;
+    }
+
+    public int getPsu_price() {
+        return psu_price;
+    }
+
+    public int getCase_price() {
+        return case_price;
+    }
+
+    public int totalAmount() {
+        return getCpu_price() + getGpu_price() + getStorage_price() + getMemory_price() + getPsu_price() + getCase_price();
     }
 }
