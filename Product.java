@@ -1,87 +1,47 @@
 package orderingSystem;
 
-public class orderItems {
-    private int cpu_price;
-    private int gpu_price;
-    private int storage_price;
-    private int memory_price;
-    private int psu_price;
-    private int case_price;
-    private String cpu;
-    private String gpu;
-    private String storage;
-    private String memory;
-    private String psu;
-    private String pc_case;
+public class Product {
+    String [] cpu = {"Intel Core i5-13400", "Intel Core i9-13900k","Intel Core i9-14900k", "Ryzen 7 7800X3D", "Ryzen 9 7950X3D"};
 
-    public orderItems(String cpu, String gpu, String storage, String memory, String psu, String pc_case, int cpu_price, int gpu_price, int storage_price, int memory_price, int psu_price,int case_price ) {
-        this.cpu = cpu;
-        this.gpu = gpu;
-        this.storage = storage;
-        this.memory = memory;
-        this.psu = psu;
-        this.pc_case = pc_case;
-        this.cpu_price = cpu_price;
-        this.gpu_price = gpu_price;
-        this.storage_price = storage_price;
-        this.memory_price = memory_price;
-        this.psu_price = psu_price;
-        this.case_price = case_price;
+    String [] gpu = {"RTX 3060 ti", "RTX 4060 ti", "RTX 4070", "RX 6800 XT", "RX 7900 XTX"};
+
+    String [] storage = {"512gb NVME SSD", "1TB NVME SSD", "2TB NVME SSD"};
+
+    String [] memory = {"2x8gb RAM", "2x16gb RAM", "2x32gb RAM"};
+
+    String [] psu = {"650W 80+ Gold", "750W 80+ Gold", "850W 80+ Gold"};
+
+    String [] pc_case = {"ATX", "Micro-ATX"};
+
+
+
+
+    public String getCpu(int index) {
+        return cpu[index -1];
+    }
+
+    public String getGpu(int index) {
+        return gpu[index -1];
     }
 
 
-    public String getCpu() {
-        return cpu;
-    }
-
-    public String getGpu() {
-        return gpu;
+    public String getStorage(int index) {
+        return storage[index - 1];
     }
 
 
-    public String getStorage() {
-        return storage;
+    public String getMemory(int index) {
+        return memory[index - 1];
     }
 
 
-    public String getMemory() {
-        return memory;
+    public String getPsu(int index) {
+        return psu[index -1];
+    }
+
+    public String getPc_case(int index) {
+        return pc_case[index - 1];
     }
 
 
-    public String getPsu() {
-        return psu;
-    }
-
-    public String getPc_case() {
-        return pc_case;
-    }
-
-    public int getCpu_price() {
-        return cpu_price;
-    }
-
-    public int getGpu_price() {
-        return gpu_price;
-    }
-
-    public int getStorage_price() {
-        return storage_price;
-    }
-
-    public int getMemory_price() {
-        return memory_price;
-    }
-
-    public int getPsu_price() {
-        return psu_price;
-    }
-
-    public int getCase_price() {
-        return case_price;
-    }
-
-    public int totalAmount() {
-        return getCpu_price() + getGpu_price() + getStorage_price() + getMemory_price() + getPsu_price() + getCase_price();
-    }
 }
