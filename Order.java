@@ -89,8 +89,19 @@ public class Order {
         customer.name = scan.nextLine();
         System.out.print("Enter Address: ");
         customer.address = scan.nextLine();
-        System.out.print("Enter Mobile Number: ");
-        customer.mobileNumber = scan.nextLine();
+        try {
+            System.out.print("Enter Mobile Number: ");
+            customer.mobileNumber = scan.nextLine();
+            if(customer.mobileNumber.length() != 11) {
+                System.out.println("Please enter correct number!");
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            System.out.print("Enter Mobile Number: ");
+            customer.mobileNumber = scan.nextLine();
+        }
     }
 
 
