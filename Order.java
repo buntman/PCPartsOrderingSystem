@@ -55,30 +55,49 @@ public class Order {
     }
 
     public void printReceipt() {
+        System.out.println("Receipt:");
+        System.out.println("----------------------------");
         for (int i = 0; i < components.length; i++) {
-            System.out.println(components[i] +" "+ "₱" +components_price[i]);
+            System.out.printf("%-25s ₱%d%n", components[i], components_price[i]);
         }
-        System.out.println("Total Amount: " +" "+ "₱" +price.totalAmount());
+        System.out.println("----------------------------");
+        System.out.printf("Total:          ₱%d",price.totalAmount());
     }
 
 
 
 
     public void payment() {
-        System.out.println("Choose payment option\n1. Gcash\n2. Bank");
+        System.out.println("Choose payment option\n1. Gcash\n2. Bank"); //needs to validate non digit character
         System.out.print("Enter choice: ");
         int choice = scan.nextInt();
         scan.nextLine();
         if(choice == 1) {
             System.out.print("Enter Mobile Number: ");
             customer.gcashMobileNumber = scan.nextLine();
+            while (customer.gcashMobileNumber.length() != 11) {
+                System.out.print("Enter Correct Mobile Number: ");
+                customer.gcashMobileNumber = scan.nextLine();
+            }
             System.out.print("Enter pin: ");
-            customer.pin = scan.nextInt();
+            customer.pin = scan.nextLine();
+            while (customer.pin.length() !=4) {
+                System.out.print("Enter Correct Pin: ");
+                customer.pin = scan.nextLine();
+            }
         } else if(choice == 2) {
             System.out.print("Enter bank id: ");
-            customer.bankId = scan.nextInt();
-            System.out.println("Enter pin: ");
-            customer.pin = scan.nextInt();
+            customer.bankId = scan.nextLine();
+            while (customer.bankId.length() != 8) {
+                System.out.print("Enter bank id: ");
+                customer.bankId = scan.nextLine();
+            }
+            System.out.print("Enter pin: ");
+            customer.pin = scan.nextLine();
+            while (customer.pin.length() != 4) {
+                System.out.print("Enter pin: ");
+                customer.pin = scan.nextLine();
+            }
         }
     }
 
@@ -89,20 +108,14 @@ public class Order {
         customer.name = scan.nextLine();
         System.out.print("Enter Address: ");
         customer.address = scan.nextLine();
-        try {
-            System.out.print("Enter Mobile Number: ");
-            customer.mobileNumber = scan.nextLine();
-            if(customer.mobileNumber.length() != 11) {
-                System.out.println("Please enter correct number!");
-            }
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            System.out.print("Enter Mobile Number: ");
+        System.out.print("Enter Mobile Number: ");
+        customer.mobileNumber = scan.nextLine();
+        while (customer.mobileNumber.length() != 11) {
+            System.out.print("Enter Correct Mobile Number: ");
             customer.mobileNumber = scan.nextLine();
         }
     }
+
 
 
     public static void main(String[] args) {
