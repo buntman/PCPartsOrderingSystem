@@ -3,15 +3,15 @@ package orderingSystem;
 public class Product {
     String [] cpu = {"Intel Core i5-13400", "Intel Core i9-13900k","Intel Core i9-14900k", "Ryzen 7 7800X3D", "Ryzen 9 7950X3D"};
 
-    String [] gpu = {"RTX 3060 ti", "RTX 4060 ti", "RTX 4070", "RX 6800 XT", "RX 7900 XTX"};
+    String [] gpu = {"RTX 3060 ti", "RTX 4060 ti", "RX 7900 XTX", "RX 6800 XT", "RTX 4070"};
 
-    String [] storage = {"512gb NVME SSD", "1TB NVME SSD", "2TB NVME SSD"};
+    String [] storage = {"512gb M.2 NVME SSD", "1TB M.2 NVME SSD", "2TB M.2 NVME SSD"};
 
     String [] memory = {"2x8gb RAM", "2x16gb RAM", "2x32gb RAM"};
 
     String [] psu = {"650W 80+ Gold", "750W 80+ Gold", "850W 80+ Gold"};
 
-    String [] pc_case = {"ATX", "Micro-ATX"};
+    String [] pc_case = {"Mini-ITX","Micro-ATX", "ATX"};
 
 
 

@@ -5,8 +5,8 @@ public class Customer {
     String address;
     String mobileNumber;
     String gcashMobileNumber;
-    int bankId;
-    int pin;
+    String bankId;
+    String pin;
 
 
     public String getName() {
@@ -21,11 +21,11 @@ public class Customer {
         return mobileNumber;
     }
 
-    public int getBankId() {
+    public String getBankId() {
         return bankId;
     }
 
-    public int getPin() {
+    public String getPin() {
         return pin;
     }
 

@@ -7,7 +7,7 @@ public class Price {
     int [] storage_prices = {2000, 3000, 5000};
     int [] memory_prices = {2600, 4500, 8500};
     int [] psu_prices = {5000, 7000, 10000};
-    int [] case_prices = {5000, 3500};
+    int [] case_prices = {2000, 3500, 5000};
 
 
     public int getCpuPrice(int index) {
