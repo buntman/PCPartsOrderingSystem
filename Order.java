@@ -1,5 +1,6 @@
 package orderingSystem;
 
+
 import java.util.Scanner;
 
 public class Order {
@@ -14,7 +15,7 @@ public class Order {
 
 
 
-    public void userMenu() {
+        public void userOrder() {
         System.out.println("Welcome to Soltech - Crafting Excellence in High-End PCs");
         System.out.println("Get in touch with us:");
         System.out.println("Website: www.soltechpcs.com");
@@ -28,15 +29,30 @@ public class Order {
 
         if(user_choice == 1) {
             createOrder();
-            enterDetails();
-            payment();
-            printReceipt();
+            displayUserBuild();
+            System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' for Exit.");
+            int input = scan.nextInt();
+            if(input == 1) {
+                enterDetails();
+                payment();
+                printReceipt();
+            } else {
+                System.exit(0);
+            }
         } else if(user_choice == 2) {
             displayPreBuilt();
-            System.out.println();
-            enterDetails();
-            payment();
-            preBuiltReceipt();
+            System.out.print("Enter choice: ");
+            int preBuiltChoice = scan.nextInt();
+            displayChosenPreBuilt(preBuiltChoice);
+            System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' for Exit.");
+            int input = scan.nextInt();
+            if(input == 1) {
+                enterDetails();
+                payment();
+                preBuiltReceipt(preBuiltChoice);
+            } else {
+                System.exit(0);
+            }
         }
     }
 
@@ -56,79 +72,100 @@ public class Order {
         System.out.println();
 
 
-        menu.showGpu();
-        System.out.print("Enter gpu choice: ");
+        menu.showMobo();
+        System.out.print("Enter motherboard choice: ");
         int choice2 = scan.nextInt();
-        while (choice2 > product.gpu.length || choice2 < 1) {
-            System.out.println("Invalid Input! Choose from 1-5 only!");
-            menu.showGpu();
+        while (choice2 > product.motherboard.length || choice2 <1) {
+            System.out.println("Invalid Input! Choose from 1-3 only");
+            menu.showMobo();
             System.out.print("Enter again: ");
             choice2 = scan.nextInt();
         }
-        String gpu_choice = product.getGpu(choice2);
-        int gpu_price = price.getGpuPrice(choice2);
+        String mobo_choice = product.getMobo(choice2);
+        int mobo_price = price.getMoboPrice(choice2);
+        System.out.println();
+
+
+        menu.showGpu();
+        System.out.print("Enter gpu choice: ");
+        int choice3 = scan.nextInt();
+        while (choice3 > product.gpu.length || choice3 < 1) {
+            System.out.println("Invalid Input! Choose from 1-5 only!");
+            menu.showGpu();
+            System.out.print("Enter again: ");
+            choice3 = scan.nextInt();
+        }
+        String gpu_choice = product.getGpu(choice3);
+        int gpu_price = price.getGpuPrice(choice3);
         System.out.println();
 
 
         menu.showStorage();
         System.out.print("Enter storage choice: ");
-        int choice3 = scan.nextInt();
-        while (choice3 > product.storage.length || choice3 < 1) {
+        int choice4 = scan.nextInt();
+        while (choice4 > product.storage.length || choice4 < 1) {
             menu.showStorage();
             System.out.print("Enter again: ");
-            choice3 = scan.nextInt();
+            choice4 = scan.nextInt();
         }
-        String storage_choice = product.getStorage(choice3);
-        int storage_price = price.getStoragePrice(choice3);
+        String storage_choice = product.getStorage(choice4);
+        int storage_price = price.getStoragePrice(choice4);
         System.out.println();
 
 
         menu.showMemory();
         System.out.print("Enter ram choice: ");
-        int choice4 = scan.nextInt();
-        while (choice4 > product.memory.length || choice4 < 1) {
+        int choice5 = scan.nextInt();
+        while (choice5 > product.memory.length || choice5 < 1) {
             menu.showMemory();
             System.out.print("Enter again: ");
-            choice4 = scan.nextInt();
+            choice5 = scan.nextInt();
         }
-        String ram_choice = product.getMemory(choice4);
-        int ram_price = price.getMemoryPrice(choice4);
+        String ram_choice = product.getMemory(choice5);
+        int ram_price = price.getMemoryPrice(choice5);
         System.out.println();
 
 
         menu.showPsu();
         System.out.print("Enter psu choice: ");
-        int choice5 = scan.nextInt();
-        while (choice5 > product.psu.length || choice5 < 1) {
+        int choice6 = scan.nextInt();
+        while (choice6 > product.psu.length || choice6 < 1) {
             menu.showPsu();
             System.out.print("Enter again: ");
-            choice5 = scan.nextInt();
+            choice6 = scan.nextInt();
         }
-        String psu_choice = product.getPsu(choice5);
-        int psu_price = price.getPsuPrice(choice5);
+        String psu_choice = product.getPsu(choice6);
+        int psu_price = price.getPsuPrice(choice6);
         System.out.println();
 
         menu.showPcCase();
         System.out.print("Enter case choice: ");
-        int choice6 = scan.nextInt();
-        while (choice6 > product.pc_case.length || choice6 <1) {
+        int choice7 = scan.nextInt();
+        while (choice7 > product.pc_case.length || choice7 <1) {
             menu.showPcCase();
             System.out.print("Enter again: ");
-            choice6 = scan.nextInt();
+            choice7 = scan.nextInt();
         }
-        String case_choice = product.getPc_case(choice6);
-        int case_price = price.getCasePrice(choice6);
+        String case_choice = product.getPc_case(choice7);
+        int case_price = price.getCasePrice(choice7);
+        System.out.println();
 
-        components = new String[]{cpu_choice, gpu_choice, storage_choice, ram_choice, psu_choice, case_choice};
-        componentsPrice = new int[]{cpu_price, gpu_price, storage_price, ram_price, psu_price, case_price};
+        components = new String[]{cpu_choice, mobo_choice, gpu_choice, storage_choice, ram_choice, psu_choice, case_choice};
+        componentsPrice = new int[]{cpu_price, mobo_price, gpu_price, storage_price, ram_price, psu_price, case_price};
     }
 
 
     private void displayPreBuilt() {
+        System.out.println("Pre-Built 1");
         for (int i = 0; i < product.preBuilt.length; i++) {
             System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
         }
-
+        System.out.println();
+        System.out.println("Pre-Built 2");
+        for (int i = 0; i < product.preBuilt1.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
+        }
+        System.out.println();
     }
     private void printReceipt() {
         System.out.println("Receipt:");
@@ -137,17 +174,27 @@ public class Order {
             System.out.printf("%-25s ₱%d%n", components[i], componentsPrice[i]);
         }
         System.out.println("----------------------------");
-        System.out.printf("Total:          ₱%d",price.totalAmount());
+        System.out.printf("Total:          ₱%d", price.getTotalAmount());
     }
 
-    private void preBuiltReceipt() {
-        System.out.println("Receipt:");
-        System.out.println("----------------------------");
-        for (int i = 0; i < product.preBuilt.length; i++) {
-            System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
+    private void preBuiltReceipt(int preBuiltChoice) {
+        if(preBuiltChoice == 1) {
+            System.out.println("Receipt:");
+            System.out.println("----------------------------");
+            for (int i = 0; i < product.preBuilt.length; i++) {
+                System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
+            }
+            System.out.println("----------------------------");
+            System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
+        } else {
+            System.out.println("Receipt:");
+            System.out.println("----------------------------");
+            for (int i = 0; i < product.preBuilt1.length; i++) {
+                System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
+            }
+            System.out.println("----------------------------");
+            System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
         }
-        System.out.println("----------------------------");
-        System.out.printf("Total:          ₱%d",price.preBuiltAmount());
     }
 
     private void payment() {
@@ -172,6 +219,7 @@ public class Order {
             System.out.print("Enter bank id: ");
             customer.bankId = scan.nextLine();
             while (customer.bankId.length() != 8) {
+                System.out.println("Bank ID must be at least 8 digits!");
                 System.out.print("Enter bank id: ");
                 customer.bankId = scan.nextLine();
             }
@@ -196,6 +244,29 @@ public class Order {
         while (customer.mobileNumber.length() != 11) {
             System.out.print("Enter Correct Mobile Number: ");
             customer.mobileNumber = scan.nextLine();
+        }
+    }
+
+    public void displayUserBuild() {
+        System.out.println("Chosen Parts:");
+        for (int i = 0; i < components.length; i++) {
+            System.out.printf("%-25s ₱%d%n", components[i], componentsPrice[i]);
+        }
+    }
+
+    public void displayChosenPreBuilt(int choice) {
+        if(choice == 1) {
+            System.out.println("Pre-Built 1");
+            for (int i = 0; i < product.preBuilt.length; i++) {
+                System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
+            }
+            System.out.println();
+        } else {
+            System.out.println("Pre-Built 2");
+            for (int i = 0; i < product.preBuilt1.length; i++) {
+                System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
+            }
+            System.out.println();
         }
     }
 

@@ -17,6 +17,16 @@ public class Menu {
             System.out.println(i + 1 + combined[i] + " ");
         }
     }
+    public void showMobo() {
+        String [] combined = new String[product.motherboard.length];
+        for (int i = 0; i < product.motherboard.length; i++) {
+            combined[i] = Arrays.toString(new String[]{product.motherboard[i], "₱" + price.board_prices[i]});
+        }
+        System.out.println("MOTHERBOARD");
+        for (int i = 0; i < combined.length; i++) {
+            System.out.println(i + 1 + combined[i] + " ");
+        }
+    }
 
     public void showGpu() {
         String [] combined = new String[product.gpu.length];

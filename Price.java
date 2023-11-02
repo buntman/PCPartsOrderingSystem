@@ -9,7 +9,9 @@ public class Price {
     int [] memory_prices = {2600, 4500, 8500};
     int [] psu_prices = {5000, 7000, 10000};
     int [] case_prices = {2000, 3500, 5000};
-    int [] preBuiltPrice = {21000, 9000, 45000, 5000, 8500, 10000, 5000};
+    int [] preBuiltPrice = {12400, 5700, 16000, 3000, 2600,5000,3500};
+    int [] preBuiltPrice1 = {21000, 9000, 45000, 5000, 8500, 10000, 5000};
+
 
 
     public int getCpuPrice(int index) {
@@ -17,39 +19,50 @@ public class Price {
         return cpu_prices[index -1];
     }
 
+    public int getMoboPrice(int index) {
+        totalAmount+= board_prices[index -1];
+        return board_prices[index -1];
+    }
+
     public int getGpuPrice(int index) {
-        totalAmount+=cpu_prices[index -1];
+        totalAmount+=gpu_prices[index -1];
         return gpu_prices[index -1];
     }
 
     public int getStoragePrice(int index) {
-        totalAmount+=cpu_prices[index -1];
+        totalAmount+=storage_prices[index -1];
         return storage_prices[index -1];
     }
 
     public int getMemoryPrice(int index) {
-        totalAmount+=cpu_prices[index -1];
+        totalAmount+=memory_prices[index -1];
         return memory_prices[index -1];
     }
 
     public int getPsuPrice(int index) {
-        totalAmount+=cpu_prices[index -1];
+        totalAmount+=psu_prices[index -1];
         return psu_prices[index -1];
     }
 
     public int getCasePrice(int index) {
-        totalAmount+=cpu_prices[index -1];
+        totalAmount+=case_prices[index -1];
         return case_prices[index -1];
     }
 
-    public int totalAmount() {
+    public int getTotalAmount() {
         return totalAmount;
     }
 
-    public int preBuiltAmount() {
+    public int preBuiltAmount(int preBuiltChoice) {
         int sum = 0;
-        for (int i = 0; i < preBuiltPrice.length; i++) {
-            sum += preBuiltPrice[i];
+        if(preBuiltChoice == 1) {
+            for (int i = 0; i < preBuiltPrice.length; i++) {
+                sum += preBuiltPrice[i];
+            }
+        } else {
+            for (int i = 0; i < preBuiltPrice1.length; i++) {
+                sum += preBuiltPrice1[i];
+            }
         }
         return sum;
     }
