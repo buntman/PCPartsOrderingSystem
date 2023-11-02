@@ -11,8 +11,6 @@ public class Order {
     Customer customer = new Customer();
     String components [];
     int componentsPrice [];
-    String preBuiltComponents [];
-    int preBuiltPrice [];
 
 
 
@@ -34,12 +32,11 @@ public class Order {
             payment();
             printReceipt();
         } else if(user_choice == 2) {
-            menu.showPrebuilt();
-            orderPreBuilt();
+            displayPreBuilt();
             System.out.println();
             enterDetails();
             payment();
-            printPreBuiltReceipt();
+            preBuiltReceipt();
         }
     }
 
@@ -127,22 +124,10 @@ public class Order {
     }
 
 
-    private void orderPreBuilt() {
-        String preBuiltCpu = product.getCpu(product.cpu.length);
-        int cpuPrice = price.getCpuPrice(price.cpu_prices.length);
-        String preBuiltGpu = product.getGpu(product.gpu.length);
-        int gpuPrice = price.getGpuPrice(price.gpu_prices.length);
-        String preBuiltStorage = product.getStorage(product.storage.length);
-        int storagePrice = price.getStoragePrice(price.storage_prices.length);
-        String preBuiltMemory = product.getMemory(product.memory.length);
-        int memoryPrice = price.getMemoryPrice(price.memory_prices.length);
-        String preBuiltPsu = product.getPsu(product.psu.length);
-        int psuPrice = price.getPsuPrice(price.psu_prices.length);
-        String preBuiltCase = product.getPc_case(product.pc_case.length);
-        int casePrice = price.getCasePrice(price.case_prices.length);
-
-        preBuiltComponents = new String[]{preBuiltCpu, preBuiltGpu, preBuiltStorage, preBuiltMemory, preBuiltPsu, preBuiltCase};
-        preBuiltPrice = new int[] {cpuPrice, gpuPrice, storagePrice, memoryPrice, psuPrice, casePrice};
+    private void displayPreBuilt() {
+        for (int i = 0; i < product.preBuilt.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
+        }
 
     }
     private void printReceipt() {
@@ -155,14 +140,14 @@ public class Order {
         System.out.printf("Total:          ₱%d",price.totalAmount());
     }
 
-    private void printPreBuiltReceipt() {
+    private void preBuiltReceipt() {
         System.out.println("Receipt:");
         System.out.println("----------------------------");
-        for (int i = 0; i < preBuiltComponents.length; i++) {
-            System.out.printf("%-25s ₱%d%n", preBuiltComponents[i], preBuiltPrice[i]);
+        for (int i = 0; i < product.preBuilt.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
         }
         System.out.println("----------------------------");
-        System.out.printf("Total:          ₱%d",price.totalAmount());
+        System.out.printf("Total:          ₱%d",price.preBuiltAmount());
     }
 
     private void payment() {
