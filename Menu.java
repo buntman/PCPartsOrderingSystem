@@ -82,4 +82,33 @@ public class Menu {
             System.out.println(i + 1 + combined[i] + " ");
         }
     }
+
+    public void displayPreBuilt() {
+        System.out.println("Pre-Built 1");
+        for (int i = 0; i < product.preBuilt.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
+        }
+        System.out.println();
+        System.out.println("Pre-Built 2");
+        for (int i = 0; i < product.preBuilt1.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
+        }
+        System.out.println();
+    }
+
+    public void displayChosenPreBuilt(int choice) {
+        if(choice == 1) {
+            System.out.println("Pre-Built 1");
+            for (int i = 0; i < product.preBuilt.length; i++) {
+                System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
+            }
+            System.out.println();
+        } else {
+            System.out.println("Pre-Built 2");
+            for (int i = 0; i < product.preBuilt1.length; i++) {
+                System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
+            }
+            System.out.println();
+        }
+    }
 }

@@ -78,10 +78,10 @@ public class Order {
             }
         } else if(user_choice == 2) {
             hasOrder = true;
-            displayPreBuilt();
+            menu.displayPreBuilt();
             System.out.print("Enter choice: ");
             preBuiltChoice = scan.nextInt();
-            displayChosenPreBuilt(preBuiltChoice);
+            menu.displayChosenPreBuilt(preBuiltChoice);
             System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' to go back to the main menu.");
             int input = scan.nextInt();
             if(input == 1) {
@@ -199,18 +199,6 @@ public class Order {
     }
 
 
-    private void displayPreBuilt() {
-        System.out.println("Pre-Built 1");
-        for (int i = 0; i < product.preBuilt.length; i++) {
-            System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
-        }
-        System.out.println();
-        System.out.println("Pre-Built 2");
-        for (int i = 0; i < product.preBuilt1.length; i++) {
-            System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
-        }
-        System.out.println();
-    }
     private void printReceipt() {
         System.out.println("Receipt:");
         System.out.println("----------------------------");
@@ -251,20 +239,5 @@ public class Order {
         }
     }
 
-    private void displayChosenPreBuilt(int choice) {
-        if(choice == 1) {
-            System.out.println("Pre-Built 1");
-            for (int i = 0; i < product.preBuilt.length; i++) {
-                System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
-            }
-            System.out.println();
-        } else {
-            System.out.println("Pre-Built 2");
-            for (int i = 0; i < product.preBuilt1.length; i++) {
-                System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
-            }
-            System.out.println();
-        }
-    }
 
 }
