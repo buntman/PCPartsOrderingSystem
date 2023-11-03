@@ -10,24 +10,54 @@ public class Order {
     Price price = new Price();
     Menu menu = new Menu();
     Customer customer = new Customer();
-    String components [];
-    int componentsPrice [];
+    String [] components;
+    int [] componentsPrice;
+    private int preBuiltChoice;
+    private boolean hasOrder;
+    private int user_choice;
 
 
+
+
+        public void startProgram() {
+            System.out.println("Welcome to Soltech - Crafting Excellence in High-End PCs");
+            System.out.println("Get in touch with us:");
+            System.out.println("Website: www.soltechpcs.com");
+            System.out.println("Phone: 1-800-SOLTECH");
+            System.out.println("Email: info@soltechpcs.com");
+            System.out.println();
+            while (true) {
+                System.out.println("1. Order\n2. View Order\n3. Exit");
+                System.out.print("Enter Choice: ");
+                int userInput = scan.nextInt();
+                if(userInput == 1) {
+                    userOrder();
+                } else if(userInput == 2) {
+                    if(!hasOrder) {
+                        System.out.println("You have no order!");
+                    } else {
+                        if(user_choice == 1) {
+                            printReceipt();
+                            customer.customerDetails();
+                        } else {
+                            preBuiltReceipt(preBuiltChoice);
+                            customer.customerDetails();
+                        }
+                    }
+                } else if(userInput == 3) {
+                    break;
+                }
+            }
+        }
 
         public void userOrder() {
-        System.out.println("Welcome to Soltech - Crafting Excellence in High-End PCs");
-        System.out.println("Get in touch with us:");
-        System.out.println("Website: www.soltechpcs.com");
-        System.out.println("Phone: 1-800-SOLTECH");
-        System.out.println("Email: info@soltechpcs.com");
-        System.out.println();
         System.out.println("1. Build your own\n2. Pre-Built");
         System.out.print("Enter Choice: ");
-        int user_choice = scan.nextInt();
+        user_choice = scan.nextInt();
         System.out.println();
 
         if(user_choice == 1) {
+            hasOrder = true;
             createOrder();
             displayUserBuild();
             System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' for Exit.");
@@ -35,21 +65,34 @@ public class Order {
             if(input == 1) {
                 enterDetails();
                 payment();
-                printReceipt();
+                System.out.println("Press '1' to confirm payment or '2' for Exit.");
+                int user_choice2 = scan.nextInt();
+                if(user_choice2 == 1) {
+                    printReceipt();
+                } else {
+                    System.exit(0);
+                }
             } else {
                 System.exit(0);
             }
         } else if(user_choice == 2) {
+            hasOrder = true;
             displayPreBuilt();
             System.out.print("Enter choice: ");
-            int preBuiltChoice = scan.nextInt();
+            preBuiltChoice = scan.nextInt();
             displayChosenPreBuilt(preBuiltChoice);
             System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' for Exit.");
             int input = scan.nextInt();
             if(input == 1) {
                 enterDetails();
                 payment();
-                preBuiltReceipt(preBuiltChoice);
+                System.out.println("Press '1' to confirm payment or '2' for Exit.");
+                int user_choice2 = scan.nextInt();
+                if(user_choice2 == 1) {
+                    preBuiltReceipt(preBuiltChoice);
+                } else {
+                    System.exit(0);
+                }
             } else {
                 System.exit(0);
             }
@@ -175,6 +218,7 @@ public class Order {
         }
         System.out.println("----------------------------");
         System.out.printf("Total:          ₱%d", price.getTotalAmount());
+        System.out.println();
     }
 
     private void preBuiltReceipt(int preBuiltChoice) {
@@ -186,6 +230,7 @@ public class Order {
             }
             System.out.println("----------------------------");
             System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
+            System.out.println();
         } else {
             System.out.println("Receipt:");
             System.out.println("----------------------------");
@@ -194,6 +239,7 @@ public class Order {
             }
             System.out.println("----------------------------");
             System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
+            System.out.println();
         }
     }
 
@@ -203,10 +249,10 @@ public class Order {
         int choice = scan.nextInt();
         scan.nextLine();
         if(choice == 1) {
-            System.out.print("Enter Mobile Number: ");
+            System.out.print("Enter Gcash Number: ");
             customer.gcashMobileNumber = scan.nextLine();
             while (customer.gcashMobileNumber.length() != 11) {
-                System.out.print("Enter Correct Mobile Number: ");
+                System.out.print("Enter Correct Gcash Number: ");
                 customer.gcashMobileNumber = scan.nextLine();
             }
             System.out.print("Enter pin: ");

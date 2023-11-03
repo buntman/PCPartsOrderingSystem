@@ -34,9 +34,12 @@ public class Customer {
     }
 
     public void customerDetails() {
+        System.out.println();
         System.out.println("Customer Details");
         System.out.println("Name: " + name);
         System.out.println("Address: " + address);
-        System.out.println("Enter mobile number: " + mobileNumber);
+        System.out.println("Mobile Number: " + mobileNumber);
+        System.out.println("Delivery Time: 3-5 days");
+        System.out.println();
     }
 }
