@@ -10,6 +10,7 @@ public class Order {
     Price price = new Price();
     Menu menu = new Menu();
     Customer customer = new Customer();
+    Payment payment = new Payment();
     String [] components;
     int [] componentsPrice;
     private int preBuiltChoice;
@@ -63,8 +64,8 @@ public class Order {
             System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' to go back to the main menu.");
             int input = scan.nextInt();
             if(input == 1) {
-                enterDetails();
-                payment();
+                customer.enterDetails();
+                payment.paymentOption();
                 System.out.println("Press '1' to confirm payment or '2' to go back to the main menu.");
                 int user_choice2 = scan.nextInt();
                 if(user_choice2 == 1) {
@@ -84,8 +85,8 @@ public class Order {
             System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' to go back to the main menu.");
             int input = scan.nextInt();
             if(input == 1) {
-                enterDetails();
-                payment();
+                customer.enterDetails();
+                payment.paymentOption();
                 System.out.println("Press '1' to confirm payment or '2' to go back to the main menu.");
                 int user_choice2 = scan.nextInt();
                 if(user_choice2 == 1) {
@@ -240,68 +241,6 @@ public class Order {
             System.out.println("----------------------------");
             System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
             System.out.println();
-        }
-    }
-
-    private void payment() {
-        System.out.println("Choose payment option\n1. Gcash\n2. Bank"); //needs to validate non digit character
-        System.out.print("Enter choice: ");
-        int choice = scan.nextInt();
-        scan.nextLine();
-        if(choice == 1) {
-            System.out.print("Enter Gcash Number: ");
-            String gcashMobileNumber = scan.nextLine();
-            customer.setGcashMobileNumber(gcashMobileNumber);
-            while (customer.getGcashMobileNumber().length() != 11) {
-                System.out.print("Enter Correct Gcash Number: ");
-                gcashMobileNumber = scan.nextLine();
-                customer.setGcashMobileNumber(gcashMobileNumber);
-            }
-            System.out.print("Enter pin: ");
-            String pin = scan.nextLine();
-            customer.setPin(pin);
-            while (customer.getPin().length() !=4) {
-                System.out.print("Enter Correct Pin: ");
-                pin = scan.nextLine();
-                customer.setPin(pin);
-            }
-        } else if(choice == 2) {
-            System.out.print("Enter bank id: ");
-            String bankId = scan.nextLine();
-            customer.setBankId(bankId);
-            while (customer.getBankId().length() != 8) {
-                System.out.println("Bank ID must be at least 8 digits!");
-                System.out.print("Enter bank id: ");
-                bankId = scan.nextLine();
-                customer.setBankId(bankId);
-            }
-            System.out.print("Enter pin: ");
-            String pin = scan.nextLine();
-            customer.setPin(pin);
-            while (customer.getPin().length() !=4) {
-                System.out.print("Enter Correct Pin: ");
-                pin = scan.nextLine();
-                customer.setPin(pin);
-            }
-        }
-    }
-
-    private void enterDetails() {
-        System.out.println("Customer Details");
-        scan.nextLine();
-        System.out.print("Enter Full Name: ");
-        String name = scan.nextLine();
-        customer.setName(name);
-        System.out.print("Enter Address: ");
-        String address = scan.nextLine();
-        customer.setAddress(address);
-        System.out.print("Enter Mobile Number: ");
-        String mobileNumber = scan.nextLine();
-        customer.setMobileNumber(mobileNumber);
-        while (customer.getMobileNumber().length() != 11) {
-            System.out.print("Enter Correct Mobile Number: ");
-            mobileNumber = scan.nextLine();
-            customer.setMobileNumber(mobileNumber);
         }
     }
 
