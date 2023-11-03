@@ -1,6 +1,9 @@
 package orderingSystem;
 
+import java.util.Scanner;
+
 public class Customer {
+    Scanner scan = new Scanner(System.in);
     private String name;
     private String address;
     private String mobileNumber;
@@ -56,8 +59,25 @@ public class Customer {
         return gcashMobileNumber;
     }
 
+    public void enterDetails() {
+        System.out.println("Enter Details");
+        System.out.print("Enter Full Name: ");
+        String name = scan.nextLine();
+        setName(name);
+        System.out.print("Enter Address: ");
+        String address = scan.nextLine();
+        setAddress(address);
+        System.out.print("Enter Mobile Number: ");
+        String mobileNumber = scan.nextLine();
+        setMobileNumber(mobileNumber);
+        while (getMobileNumber().length() != 11) {
+            System.out.print("Enter Correct Mobile Number: ");
+            mobileNumber = scan.nextLine();
+            setMobileNumber(mobileNumber);
+        }
+    }
+
     public void customerDetails() {
-        System.out.println();
         System.out.println("Customer Details");
         System.out.println("Name: " + getName());
         System.out.println("Address: " + getAddress());
