@@ -60,20 +60,20 @@ public class Order {
             hasOrder = true;
             createOrder();
             displayUserBuild();
-            System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' for Exit.");
+            System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' to go back to the main menu.");
             int input = scan.nextInt();
             if(input == 1) {
                 enterDetails();
                 payment();
-                System.out.println("Press '1' to confirm payment or '2' for Exit.");
+                System.out.println("Press '1' to confirm payment or '2' to go back to the main menu.");
                 int user_choice2 = scan.nextInt();
                 if(user_choice2 == 1) {
                     printReceipt();
                 } else {
-                    System.exit(0);
+                    hasOrder = false;
                 }
             } else {
-                System.exit(0);
+                hasOrder = false;
             }
         } else if(user_choice == 2) {
             hasOrder = true;
@@ -81,20 +81,20 @@ public class Order {
             System.out.print("Enter choice: ");
             preBuiltChoice = scan.nextInt();
             displayChosenPreBuilt(preBuiltChoice);
-            System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' for Exit.");
+            System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' to go back to the main menu.");
             int input = scan.nextInt();
             if(input == 1) {
                 enterDetails();
                 payment();
-                System.out.println("Press '1' to confirm payment or '2' for Exit.");
+                System.out.println("Press '1' to confirm payment or '2' to go back to the main menu.");
                 int user_choice2 = scan.nextInt();
                 if(user_choice2 == 1) {
                     preBuiltReceipt(preBuiltChoice);
                 } else {
-                    System.exit(0);
+                    hasOrder = false;
                 }
             } else {
-                System.exit(0);
+                hasOrder = false;
             }
         }
     }
