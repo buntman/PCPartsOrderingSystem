@@ -50,7 +50,7 @@ public class Order {
             }
         }
 
-        public void userOrder() {
+        private void userOrder() {
         System.out.println("1. Build your own\n2. Pre-Built");
         System.out.print("Enter Choice: ");
         user_choice = scan.nextInt();
@@ -250,30 +250,38 @@ public class Order {
         scan.nextLine();
         if(choice == 1) {
             System.out.print("Enter Gcash Number: ");
-            customer.gcashMobileNumber = scan.nextLine();
-            while (customer.gcashMobileNumber.length() != 11) {
+            String gcashMobileNumber = scan.nextLine();
+            customer.setGcashMobileNumber(gcashMobileNumber);
+            while (customer.getGcashMobileNumber().length() != 11) {
                 System.out.print("Enter Correct Gcash Number: ");
-                customer.gcashMobileNumber = scan.nextLine();
+                gcashMobileNumber = scan.nextLine();
+                customer.setGcashMobileNumber(gcashMobileNumber);
             }
             System.out.print("Enter pin: ");
-            customer.pin = scan.nextLine();
-            while (customer.pin.length() !=4) {
+            String pin = scan.nextLine();
+            customer.setPin(pin);
+            while (customer.getPin().length() !=4) {
                 System.out.print("Enter Correct Pin: ");
-                customer.pin = scan.nextLine();
+                pin = scan.nextLine();
+                customer.setPin(pin);
             }
         } else if(choice == 2) {
             System.out.print("Enter bank id: ");
-            customer.bankId = scan.nextLine();
-            while (customer.bankId.length() != 8) {
+            String bankId = scan.nextLine();
+            customer.setBankId(bankId);
+            while (customer.getBankId().length() != 8) {
                 System.out.println("Bank ID must be at least 8 digits!");
                 System.out.print("Enter bank id: ");
-                customer.bankId = scan.nextLine();
+                bankId = scan.nextLine();
+                customer.setBankId(bankId);
             }
             System.out.print("Enter pin: ");
-            customer.pin = scan.nextLine();
-            while (customer.pin.length() != 4) {
-                System.out.print("Enter pin: ");
-                customer.pin = scan.nextLine();
+            String pin = scan.nextLine();
+            customer.setPin(pin);
+            while (customer.getPin().length() !=4) {
+                System.out.print("Enter Correct Pin: ");
+                pin = scan.nextLine();
+                customer.setPin(pin);
             }
         }
     }
@@ -282,25 +290,29 @@ public class Order {
         System.out.println("Customer Details");
         scan.nextLine();
         System.out.print("Enter Full Name: ");
-        customer.name = scan.nextLine();
+        String name = scan.nextLine();
+        customer.setName(name);
         System.out.print("Enter Address: ");
-        customer.address = scan.nextLine();
+        String address = scan.nextLine();
+        customer.setAddress(address);
         System.out.print("Enter Mobile Number: ");
-        customer.mobileNumber = scan.nextLine();
-        while (customer.mobileNumber.length() != 11) {
+        String mobileNumber = scan.nextLine();
+        customer.setMobileNumber(mobileNumber);
+        while (customer.getMobileNumber().length() != 11) {
             System.out.print("Enter Correct Mobile Number: ");
-            customer.mobileNumber = scan.nextLine();
+            mobileNumber = scan.nextLine();
+            customer.setMobileNumber(mobileNumber);
         }
     }
 
-    public void displayUserBuild() {
+    private void displayUserBuild() {
         System.out.println("Chosen Parts:");
         for (int i = 0; i < components.length; i++) {
             System.out.printf("%-25s ₱%d%n", components[i], componentsPrice[i]);
         }
     }
 
-    public void displayChosenPreBuilt(int choice) {
+    private void displayChosenPreBuilt(int choice) {
         if(choice == 1) {
             System.out.println("Pre-Built 1");
             for (int i = 0; i < product.preBuilt.length; i++) {
