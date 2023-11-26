@@ -197,8 +197,4 @@ public class Order {
         price.componentsPrice = new int[]{cpu_price, mobo_price, gpu_price, storage_price, ram_price, psu_price, case_price};
         receipt.populateArray(product.components, price.componentsPrice);
     }
-
-
-
-
 }

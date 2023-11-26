@@ -4,22 +4,19 @@ public class Receipt {
     Product product = new Product();
     Price price = new Price();
 
-    String [] components;
-    int [] componentsPrice;
-
     public void populateArray(String [] items, int [] amount) {
-        components = items;
-        componentsPrice = amount;
+        product.components = items;
+        price.componentsPrice = amount;
     }
 
     public void printReceipt() {
         System.out.println("Receipt:");
         System.out.println("----------------------------");
-        for (int i = 0; i < components.length; i++) {
-            System.out.printf("%-25s ₱%d%n", components[i], componentsPrice[i]);
+        for (int i = 0; i < product.components.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.components[i], price.componentsPrice[i]);
         }
         System.out.println("----------------------------");
-        System.out.printf("Total:          ₱%d", price.getTotalAmount(componentsPrice));
+        System.out.printf("Total:          ₱%d", price.getTotalAmount(price.componentsPrice));
         System.out.println();
     }
 
