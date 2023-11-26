@@ -11,46 +11,44 @@ public class Price {
     int [] case_prices = {2000, 3500, 5000};
     int [] preBuiltPrice = {12400, 5700, 16000, 3000, 2600,5000,3500};
     int [] preBuiltPrice1 = {21000, 9000, 45000, 5000, 8500, 10000, 5000};
+    int [] componentsPrice = {};
 
 
 
     public int getCpuPrice(int index) {
-        totalAmount+=cpu_prices[index -1];
         return cpu_prices[index -1];
     }
 
     public int getMoboPrice(int index) {
-        totalAmount+= board_prices[index -1];
         return board_prices[index -1];
     }
 
     public int getGpuPrice(int index) {
-        totalAmount+=gpu_prices[index -1];
         return gpu_prices[index -1];
     }
 
     public int getStoragePrice(int index) {
-        totalAmount+=storage_prices[index -1];
         return storage_prices[index -1];
     }
 
     public int getMemoryPrice(int index) {
-        totalAmount+=memory_prices[index -1];
         return memory_prices[index -1];
     }
 
     public int getPsuPrice(int index) {
-        totalAmount+=psu_prices[index -1];
         return psu_prices[index -1];
     }
 
     public int getCasePrice(int index) {
-        totalAmount+=case_prices[index -1];
         return case_prices[index -1];
     }
 
-    public int getTotalAmount() {
-        return totalAmount;
+    public int getTotalAmount(int [] componentsPrice) {
+        int sum = 0;
+        for (int i = 0; i < componentsPrice.length; i++) {
+            sum += componentsPrice[i];
+        }
+        return sum;
     }
 
     public int preBuiltAmount(int preBuiltChoice) {

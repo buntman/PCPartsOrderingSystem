@@ -11,8 +11,7 @@ public class Order {
     Menu menu = new Menu();
     Customer customer = new Customer();
     Payment payment = new Payment();
-    String [] components;
-    int [] componentsPrice;
+    Receipt receipt = new Receipt();
     private int preBuiltChoice;
     private boolean hasOrder;
     private int user_choice;
@@ -38,10 +37,10 @@ public class Order {
                         System.out.println("You have no order!");
                     } else {
                         if(user_choice == 1) {
-                            printReceipt();
+                            receipt.printReceipt();
                             customer.customerDetails();
                         } else {
-                            preBuiltReceipt(preBuiltChoice);
+                            receipt.preBuiltReceipt(preBuiltChoice);
                             customer.customerDetails();
                         }
                     }
@@ -60,7 +59,7 @@ public class Order {
         if(user_choice == 1) {
             hasOrder = true;
             createOrder();
-            displayUserBuild();
+            menu.displayUserBuild();
             System.out.println("Are you satisfied with your chosen parts? Please enter '1' to proceed for Checkout or '2' to go back to the main menu.");
             int input = scan.nextInt();
             if(input == 1) {
@@ -69,7 +68,7 @@ public class Order {
                 System.out.println("Press '1' to confirm payment or '2' to go back to the main menu.");
                 int user_choice2 = scan.nextInt();
                 if(user_choice2 == 1) {
-                    printReceipt();
+                    receipt.printReceipt();
                 } else {
                     hasOrder = false;
                 }
@@ -90,7 +89,7 @@ public class Order {
                 System.out.println("Press '1' to confirm payment or '2' to go back to the main menu.");
                 int user_choice2 = scan.nextInt();
                 if(user_choice2 == 1) {
-                    preBuiltReceipt(preBuiltChoice);
+                    receipt.preBuiltReceipt(preBuiltChoice);
                 } else {
                     hasOrder = false;
                 }
@@ -194,50 +193,12 @@ public class Order {
         int case_price = price.getCasePrice(choice7);
         System.out.println();
 
-        components = new String[]{cpu_choice, mobo_choice, gpu_choice, storage_choice, ram_choice, psu_choice, case_choice};
-        componentsPrice = new int[]{cpu_price, mobo_price, gpu_price, storage_price, ram_price, psu_price, case_price};
+        product.components = new String[]{cpu_choice, mobo_choice, gpu_choice, storage_choice, ram_choice, psu_choice, case_choice};
+        price.componentsPrice = new int[]{cpu_price, mobo_price, gpu_price, storage_price, ram_price, psu_price, case_price};
+        receipt.populateArray(product.components, price.componentsPrice);
     }
 
 
-    private void printReceipt() {
-        System.out.println("Receipt:");
-        System.out.println("----------------------------");
-        for (int i = 0; i < components.length; i++) {
-            System.out.printf("%-25s ₱%d%n", components[i], componentsPrice[i]);
-        }
-        System.out.println("----------------------------");
-        System.out.printf("Total:          ₱%d", price.getTotalAmount());
-        System.out.println();
-    }
-
-    private void preBuiltReceipt(int preBuiltChoice) {
-        if(preBuiltChoice == 1) {
-            System.out.println("Receipt:");
-            System.out.println("----------------------------");
-            for (int i = 0; i < product.preBuilt.length; i++) {
-                System.out.printf("%-25s ₱%d%n", product.preBuilt[i], price.preBuiltPrice[i]);
-            }
-            System.out.println("----------------------------");
-            System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
-            System.out.println();
-        } else {
-            System.out.println("Receipt:");
-            System.out.println("----------------------------");
-            for (int i = 0; i < product.preBuilt1.length; i++) {
-                System.out.printf("%-25s ₱%d%n", product.preBuilt1[i], price.preBuiltPrice1[i]);
-            }
-            System.out.println("----------------------------");
-            System.out.printf("Total:          ₱%d",price.preBuiltAmount(preBuiltChoice));
-            System.out.println();
-        }
-    }
-
-    private void displayUserBuild() {
-        System.out.println("Chosen Parts:");
-        for (int i = 0; i < components.length; i++) {
-            System.out.printf("%-25s ₱%d%n", components[i], componentsPrice[i]);
-        }
-    }
 
 
 }

@@ -111,4 +111,11 @@ public class Menu {
             System.out.println();
         }
     }
+
+    public void displayUserBuild() {
+        System.out.println("Chosen Parts:");
+        for (int i = 0; i < product.components.length; i++) {
+            System.out.printf("%-25s ₱%d%n", product.components[i], price.componentsPrice[i]);
+        }
+    }
 }

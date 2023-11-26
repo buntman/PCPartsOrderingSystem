@@ -16,6 +16,7 @@ public class Product {
     String [] preBuilt= {"Intel Core i5-13400","Micro ATX Board", "RTX 3060 ti","1TB M.2 NVME SSD","2x8gb RAM","650W 80+ Gold","Micro-ATX CASE"};
 
     String [] preBuilt1 = {"Intel Core i9-14900k", "ATX Board", "RTX 4070", "2TB M.2 NVME SSD", "2x32gb RAM", "850W 80 + Gold", "ATX CASE"};
+    String [] components = {};
 
 
 
