@@ -1,6 +1,6 @@
 # PCPartsOrderingSystem
 
-This ordering system is our midterm project in our DSA class. This demonstrate a simple ordering system for system unit wherein you can choose to build your own individual parts or a prebuilt configuration. 
+This demonstrate a simple ordering system for system unit wherein you can choose to build your own individual parts or a prebuilt configuration. 
 
 # Features
 Order Creation: Allows users to create an order by selecting various components.
